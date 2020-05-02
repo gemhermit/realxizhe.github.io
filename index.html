@@ -22,6 +22,28 @@
     flex: 1 0 auto;
   }
   </style>
+  <script type="text/javascript" str="https://code.jquery.com/jquery-2.1.1.min.js">
+      $("#btn").hide();
+      //当滚动条的位置处于距顶部50像素以下时，跳转链接出现，否则消失
+      $(function() {
+        $(window).scroll(function() {
+          if ($(window).scrollTop() > 50) {
+            $("#btn").fadeIn(200);
+          } else {
+            $("#btn").fadeOut(200);
+          }
+        });
+      });
+      $("#btn").click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        },
+        500);
+        return false;
+      });
+    });
+  </script>
+  
   </head>
   <body>    
       
@@ -44,9 +66,9 @@
           <img src="https://www.baidu.com/favicon.ico"  style="height:30px; width:30px">
         </div>
       
-        <input type="search"  id="search" stylte="width:100%" placeholder="在此搜索" required name="wd">
+        <input type="search"  id="search" stylte="width:100%" placeholder="在百度中搜索" required name="wd">
         <div class="card-image valign-wrapper">
-          <input class="btn-floating btn-large waves-effect waves-light blue z-depth-0"  type="image" src="ic_search_white_18dp.png" alt="Submit" style="height:24dp">
+          <input class="btn-floating btn-large waves-effect waves-light blue z-depth-0"  type="image" src="ic_search_white_48dp.png" alt="Submit" style="height:24dp">
         </div>
          
         </div>
@@ -74,7 +96,7 @@
         
   <br>
 
-  <div class="fixed-action-btn">
+  <div class="fixed-action-btn"  id="btn">
     <a class="btn-floating btn-large  blue lighten-2" href="#">
       <i class="large material-icons">arrow_upward</i>
     </a>
