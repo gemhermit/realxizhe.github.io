@@ -3,13 +3,8 @@ var options = [
     {selector: '.other-class', offset: 200, callback: function() {
       customCallbackFunc();
     } },
-    {selector: '#staggered-test', offset: 50, callback: function(el) {
-        Materialize.toast("This is our ScrollFire Demo!", 1500 );
-      } },
+    {selector: '#image-test', offset: 500, callback: function(el) {
+        Materialize.fadeInImage($(el));
+      } }
   ];
   Materialize.scrollFire(options);
-
-  $(document).ready(function(){
-    $('.scrollspy').scrollSpy();
-  });
-        
