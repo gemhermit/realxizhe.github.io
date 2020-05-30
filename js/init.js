@@ -16,4 +16,4 @@
   });
 })
 
-})(jQuery); // end of jQuery name space
+})(jQuery); 
