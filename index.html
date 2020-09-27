@@ -110,9 +110,35 @@
 </div>   
 
 <br>
-<span id="jinrishici-sentence">正在加载今日诗词....</span>
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    var sentence = document.querySelector("#poem_sentence")
+    var info = document.querySelector("#poem_info")
+    var name = document.querySelector("#poem_name")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author 
+    name.innerHTML = result.data.origin.title 
+  });
+</script>
+<nav class="transparent z-depth-0 "  >
+  <div class="nav-wrapper container">
+<div class="row  container">
+  <div class="col s12 m12" >
+    <div class="card teal darken-2"  style="border-radius:30px">
+      <div class="card-content white-text">
+        <h4 id="poem_sentence">加载中</h4>
+        <div class="chip" id="poem_info"></div>
+        <div class="chip" id="poem_name"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</nav>
 <br>
+
+
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
