@@ -1,0 +1,106 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>摄像头-贝谷工具 </title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link href="favicon.png" rel="icon">
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gemhermit/file/main/materialize.min.css"  media="screen,projection"/>
+<script data-ad-client="ca-pub-3709160807018181" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    main {
+    flex: 1 0 auto;
+    }
+    </style>
+</head>
+<body><br> <div class="preloader-wrapper small active container">
+  <div class="spinner-layer spinner-blue"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div>
+  </div><div class="circle-clipper right"><div class="circle"></div>
+  </div></div>
+  <div class="spinner-layer spinner-red">
+  <div class="circle-clipper left">
+  <div class="circle"></div>
+  </div><div class="gap-patch">
+  <div class="circle"></div>
+  </div><div class="circle-clipper right"><div class="circle"></div></div></div>
+  <div class="spinner-layer spinner-yellow">
+  <div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div><div class="spinner-layer spinner-green">
+    <div class="circle-clipper left">
+    <div class="circle"></div>
+    </div><div class="gap-patch">
+    <div class="circle"></div>
+    </div><div class="circle-clipper right">
+    <div class="circle"></div>
+    </div></div>
+  </div><br>
+  <video id="v" width="100%" height="100%"></video><br>
+  <p class="container">严正声明：本站仅提供摄像头查看功能，不会收集任何隐私数据</p>       
+  <script>
+    function $(elem) {
+      return document.querySelector(elem);
+    }
+      var canvas = $('canvas'),
+        context = canvas.getContext('2d'),
+        video = $('video'),
+        snap = $('#snap'),
+        upload = $('#upload'),
+        uploaded = $('#uploaded'),
+        mediaStreamTrack;
+  </script>
+  <script>
+        !(function() {
+// 老的浏览器可能根本没有实现 mediaDevices，所以我们可以先设置一个空的对象
+            if(navigator.mediaDevices === undefined) {
+                navigator.mediaDevices = {};
+            }
+            if(navigator.mediaDevices.getUserMedia === undefined) {
+                navigator.mediaDevices.getUserMedia = function(constraints) {
+// 首先，如果有getUserMedia的话，就获得它
+                    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+// 一些浏览器根本没实现它 - 那么就返回一个error到promise的reject来保持一个统一的接口
+                    if(!getUserMedia) {
+                        return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+                    }
+// 否则，为老的navigator.getUserMedia方法包裹一个Promise
+                    return new Promise(function(resolve, reject) {
+                        getUserMedia.call(navigator, constraints, resolve, reject);
+                    });
+                }
+            }
+            const constraints = {
+                video: true,
+                audio: false
+            };
+            let promise = navigator.mediaDevices.getUserMedia(constraints);
+            promise.then(stream => {
+                let v = document.getElementById('v');
+// 旧的浏览器可能没有srcObject
+                if("srcObject" in v) {
+                    v.srcObject = stream;
+                } else {
+ // 防止再新的浏览器里使用它，应为它已经不再支持了
+                    v.src = window.URL.createObjectURL(stream);
+          }
+          v.onloadedmetadata = function(e) {
+          v.play();
+          };
+          }).catch(err => {
+          console.error(err.name + ": " + err.message);
+        })
+      })();
+  </script>
+  <br>
+  <footer>         
+  <div class="footer-copyright">
+  <div class="container grey-text text-darken-1">© bago 2021
+  <div class="right">
+  <a class="grey-text text-darken-1" href="//about.bago.top/privacy.html">服务协议&ensp;</a>
+  <a class="grey-text text-darken-1" href="//about.bago.top/privacy.html">隐私政策&ensp;</a>
+  <a class="grey-text text-darken-1" href="//about.bago.top/feedback.html">意见反馈 </a></div>                
+  </div></div></footer><br>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> 
+  </body>
