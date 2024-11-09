@@ -45238,15 +45238,16 @@ $1(a){var s,r,q,p=null,o={}
 o.a=new A.v0(p)
 s=a.a
 o.b="\u8d1d\u8c37"
-if(s!=null){if(B.c.bt(s,"/search?")){r=A.dN(s,0,p).gNT().h(0,"q")
+if(s!=null)if(B.c.bt(s,"/search?")){r=A.dN(s,0,p).gNT().h(0,"q")
 o.b=A.k(r)+" - \u8d1d\u8c37AI\u641c\u7d22"
 r.toString
 o.a=new A.FJ(r,p)}else if(B.c.bt(s,"/weather?")){q=A.dN(s,0,p).gNT().h(0,"id")
 q.toString
 o.a=new A.Hw(q,p)
-o.b="\u8d1d\u8c37\u5929\u6c14"}if(s==="/setting"){o.a=new A.G_(p)
-o.b="\u8bbe\u7f6e - \u8d1d\u8c37"}if(s==="/setting/customSearch"){o.a=new A.FI(p)
-o.b="\u8bbe\u7f6e - \u8d1d\u8c37"}else o.a=new A.v0(p)}return A.aVv(new A.aFz(o),a,t.z)},
+o.b="\u8d1d\u8c37\u5929\u6c14"}else if(s==="/setting"){o.a=new A.G_(p)
+o.b="\u8bbe\u7f6e - \u8d1d\u8c37"}else if(s==="/setting/customSearch"){o.a=new A.FI(p)
+o.b="\u8bbe\u7f6e - \u8d1d\u8c37"}else o.a=new A.v0(p)
+return A.aVv(new A.aFz(o),a,t.z)},
 $S:318}
 A.aFz.prototype={
 $1(a){var s=this.a
